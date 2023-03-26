@@ -4,35 +4,18 @@ window.addEventListener("load", initApp);
 
 console.log("Javascript kører");
 
-function initApp() {
-  const gengar = {
-    name: "Gengar",
-    description: "To steal the life of its target, it slips into the prey's shadow and silently waits for an opportunity",
-    ability: "Shadow Ball",
-    image: "https://cdn.pixabay.com/photo/2020/07/24/03/12/gengar-5432819_960_720.png",
-    footprint: "https://archives.bulbagarden.net/media/upload/c/c1/F0094.png",
-    dexindex: "94",
-    type: "Ghost, Poison",
-    subtype: "Spirit",
-    weaknesses: "Ground(2), Ghost(2), Psychic(2), Dark(2)",
-    gender: "50% female, 50% male",
-    weight: "40500 gram",
-    height: "150 cm",
-    generation: 1,
-    spilversion: 1,
-    canEvolve: false,
-    statsHP: "60",
-    statsAttack: "65",
-    statsDefence: "60",
-    statsSpecialAttack: "130",
-    statsSpecialDefence: "75",
-    statsSpeed: "110",
-  };
+async function initApp() {
+  console.log("initApp: app.js is running");
+  const gengar = await getPokemon("data/gengar.json");
   console.log(gengar);
   showPokemon(gengar);
+}
 
-  document.querySelector("#dialog");
-
+async function getPokemon(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
+  return data;
 }
 
 function showPokemonDialog(pokemon) {
@@ -57,14 +40,18 @@ function showPokemonDialog(pokemon) {
   <li>StatsDefence: ${pokemon.statsDefence}</li>
   <li>StatsSpecialAttack: ${pokemon.statsSpecialAttack}</li>
   <li>StatsSpecialDefence: ${pokemon.statsSpecialDefence}</li>
-  <li>StatsSpeed: ${pokemon.statsSpeed}</li> `
+  <li>StatsSpeed: ${pokemon.statsSpeed}</li> `;
   document.querySelector("#pokemon").insertAdjacentHTML("beforeend", myHTML);
+
+  showPokemon(gengar);
+  showPokemon(gengar);
+  showPokemon(gengar);
 }
 
 function showPokemon(pokemon) {
   console.log(pokemon);
-  document.querySelector("#pokemons").insertAdjacentHTML("beforeend", myHTML);
-  document.querySelector("#pokemons article:last-child").addEventListener("click", pokemonClicked);
+  document.querySelector("#pokemons").insertAdjacentHTML(
+    "beforeend",
     /*html*/ `
       <article class="grid-item">
         <img src="${pokemon.image}">
@@ -72,37 +59,60 @@ function showPokemon(pokemon) {
         <p>Type ${pokemon.type}, ${pokemon.subtype}</p>
         <p>Pokedex Number: ${pokemon.dexindex}</p>
       </article>
-    `;
+    `
+  );
+
+  document.querySelector("#pokemons article:last-child").addEventListener("click", pokemonClicked);
 
   function pokemonClicked() {
     console.log(pokemon);
-    document.querySelector("#dialog").showModal();
-    document.querySelector("#dialog-pokemon-name").textContent = pokemon.name;
-    document.querySelector("#dialog-type").textContent = pokemon.type;
-    document.querySelector("#dialog-dexindex").textContent = pokemon.dexindex;
-    document.querySelector("#dialog-image").src = pokemon.image;
-
-    // show dialog
-    document.querySelector("#dialog-pokemon").showModal();
+    showPokemonModal(pokemon);
   }
 }
 
-showPokemon(gengar);
-showPokemon(gengar);
-showPokemon(gengar);
-showPokemon(gengar);
-showPokemon(gengar);
-showPokemon(gengar);
+function showPokemonModal(pokemon) {
+  console.log(pokemon);
+  document.querySelector("#dialog").showModal();
+  document.querySelector("#dialog-pokemon-name").textContent = pokemon.name;
+  document.querySelector("#dialog-type").textContent = pokemon.type;
+  document.querySelector("#dialog-dexindex").textContent = pokemon.dexindex;
+  document.querySelector("#dialog-image").src = pokemon.image;
+  
+  let description = generateDescription(character);
+  document.querySelector("dialog-pokemon-description").textContent = description;
 
-function fetchJSON() {}
+  document.querySelector("dialog-gender").textContent = pokemon.gender;
+  document.querySelector("dialog-birth-date").textContent = pokemon.dateOfBirth;
+  document.querySelector("dialog-eye-color").textContent = pokemon.eyeColour;
+  document.querySelector("dialog-hair-color").textContent = pokemon.hairColour;
+  document.querySelector("dialog-ancestry").textContent = pokemon.ancestry;
+  document.querySelector("dialog-species").textContent = pokemon.species;
 
-function showList() {}
+  document.querySelector("dialog-name").textContent = pokemon.name;
+  document.querySelector("dialog-actor-name").textContent = pokemon.actor;
 
-function calcStats() {}
 
-function showGeneration() {}
+  // show dialog
+    document.querySelector("#dialog-pokemon").showModal();
+  }
 
-function getDescription () {}
+function generateDescription(pokemon) {
+  let description = "";
+  if (pokemon.hogwartsStaff && pokemon.alive) {
+    description = `${character.name} is employed at Hogwarts.`;
+  } else if (pokemon.hogwartsStaff && !pokemon.alive) {
+    description = `${pokemon.name} was employed at Hogwarts but is no longer alive.`;
+  } else if (pokemon.hogwartsStudent && pokemon.alive) {
+    description = `${pokemon.name} is a student at Hogwarts.`;
+  } else if (pokemon.hogwartsStudent && !pokemon.alive) {
+    description = `${pokemon.name} was a student at Hogwarts but is no longer alive.`;
+  }
+  return description;
+}
+
+
+
+
 
 // function showCharacter(image, name, house, dateOfBirth, actor) {
 //     //define elements

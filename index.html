@@ -13,24 +13,54 @@
     <header>
         <h1>Pokémon Characters</h1>
     </header>
-    <dialog id="dialog">
-        <h2 id="dialog-pokemon-name">Firstname</h2>
-		<h3 id="dialog-type">This is my type!</h3>
-		<p id="dialog-dexindex">This is my dexindex...</p>
-		<img id="dialog-image" src="https://cederdorff.github.io/img/favicon.webp">
-        <form method="dialog">
-		<button id="btn-cancel">Close</button>
-        </form>
-        <div id="pokemon">
-        </div>
-    </dialog>
     <main>
         <section id="pokemons" class="grid-container"></section>
     </main>
+
+    <dialog id="dialog-pokemon">
+        <section class="dialog-grid">
+            <figure><img id="dialog-image" src="images/gengar.png" alt=""></figure>
+            <article>
+                <h2 id="dialog-title"></h2>
+                <h3 id="dialog-house"></h3>
+                <p id="dialog-character-description"></p>
+                <section>
+                    <h4>Pokemon Info</h4>
+                    <ul>
+                        <li>Gender: <span id="dialog-gender"></span></li>
+                        <li>Birth Date: <span id="dialog-birth-date"></span></li>
+                        <li>Eye Color: <span id="dialog-eye-color"></span></li>
+                        <li>Hair Color: <span id="dialog-hair-color"></span></li>
+                        <li>Ancestry: <span id="dialog-ancestry"></span></li>
+                        <li>Species: <span id="dialog-species"></span></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4>Pokemon</h4>
+                    <p><span id="dialog-name">Character</span> is played by <span id="dialog-actor-name">actor
+                            name</span>.</p>
+                </section>
+
+            </article>
+        </section>
+        <form method="dialog">
+		    <button id="btn-cancel">Close</button>
+        </form>
+    </dialog>
     <footer>
         <p>Pokémon App by Nikolaj</p>
     </footer>
 
     <script src="app.js"></script>
 </body>
+
 </html>
+
+<!-- skal måske bruge: -->
+<!-- <h2 id="dialog-pokemon-name">Firstname</h2>
+		<h3 id="dialog-type">This is my type!</h3>
+		<p id="dialog-dexindex">This is my dexindex...</p>
+		<img id="dialog-image" src="https://cederdorff.github.io/img/favicon.webp">
+        <div id="pokemon">
+        </div> -->
