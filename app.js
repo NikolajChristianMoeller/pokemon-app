@@ -6,9 +6,9 @@ console.log("Javascript kører");
 
 async function initApp() {
   console.log("initApp: app.js is running");
-  const gengar = await getPokemon("data/gengar.json");
+  const gengar = await getPokemon("https://cederdorff.github.io/dat-js/05-data/pokemons.json");
   console.log(gengar);
-  showPokemon(gengar);
+  showPokemon(gengar[1]);
 }
 
 async function getPokemon(url) {
@@ -58,6 +58,7 @@ function showPokemon(pokemon) {
         <h2>${pokemon.name}</h2>
         <p>Type ${pokemon.type}, ${pokemon.subtype}</p>
         <p>Pokedex Number: ${pokemon.dexindex}</p>
+
       </article>
     `
   );
@@ -72,28 +73,33 @@ function showPokemon(pokemon) {
 
 function showPokemonModal(pokemon) {
   console.log(pokemon);
-  document.querySelector("#dialog").showModal();
+  document.querySelector("#dialog-pokemon").showModal();
   document.querySelector("#dialog-pokemon-name").textContent = pokemon.name;
-  document.querySelector("#dialog-type").textContent = pokemon.type;
-  document.querySelector("#dialog-dexindex").textContent = pokemon.dexindex;
-  document.querySelector("#dialog-image").src = pokemon.image;
-  
+  document.querySelector("#dialog-pokemon-description").textContent = pokemon.type;
+  document.querySelector("#dialog-pokemon-ability").textContent = pokemon.ability;
+  document.querySelector("#dialog-pokemon-image").src = pokemon.image;
+  document.querySelector("#dialog-pokemon-footprint").src = pokemon.footprint;
+  document.querySelector("#dialog-pokemon-dexindex").textContent = pokemon.dexIndex;
+  document.querySelector("#dialog-pokemon-type").textContent = pokemon.type;
+  document.querySelector("#dialog-pokemon-subtype").textContent = pokemon.subtype;
+  document.querySelector("#dialog-pokemon-weaknesses").textContent = pokemon.weaknesses;
+  document.querySelector("#dialog-pokemon-gender").textContent = pokemon.gender;
+  document.querySelector("#dialog-pokemon-weight").textContent = pokemon.weight;
+  document.querySelector("#dialog-pokemon-height").textContent = pokemon.height;
+  document.querySelector("#dialog-pokemon-generation").textContent = pokemon.generation;
+  document.querySelector("#dialog-pokemon-spilversion").textContent = pokemon.spilversion;
+  document.querySelector("#dialog-pokemon-canEvolve").textContent = pokemon.canEvolve;
+  document.querySelector("#dialog-pokemon-health-points").textContent = pokemon.statsHP;
+  document.querySelector("#dialog-pokemon-attack").textContent = pokemon.statsAttack;
+  document.querySelector("#dialog-pokemon-defense").textContent = pokemon.statsDefence;
+  document.querySelector("#dialog-pokemon-special-attack").textContent = pokemon.statsSpecialAttack;
+  document.querySelector("#dialog-pokemon-special-defense").textContent = pokemon.statsSpecialDefence;
+  document.querySelector("#dialog-pokemon-speed").textContent = pokemon.statsSpeed;
+
   let description = generateDescription(character);
   document.querySelector("dialog-pokemon-description").textContent = description;
-
-  document.querySelector("dialog-gender").textContent = pokemon.gender;
-  document.querySelector("dialog-birth-date").textContent = pokemon.dateOfBirth;
-  document.querySelector("dialog-eye-color").textContent = pokemon.eyeColour;
-  document.querySelector("dialog-hair-color").textContent = pokemon.hairColour;
-  document.querySelector("dialog-ancestry").textContent = pokemon.ancestry;
-  document.querySelector("dialog-species").textContent = pokemon.species;
-
-  document.querySelector("dialog-name").textContent = pokemon.name;
-  document.querySelector("dialog-actor-name").textContent = pokemon.actor;
-
-
-  // show dialog
-    document.querySelector("#dialog-pokemon").showModal();
+  
+  document.querySelector("#dialog-pokemon").showModal();
   }
 
 function generateDescription(pokemon) {
