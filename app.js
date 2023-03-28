@@ -43,10 +43,6 @@ function showPokemonDialog(pokemon) {
   <li>StatsSpecialDefence: ${pokemon.statsSpecialDefence}</li>
   <li>StatsSpeed: ${pokemon.statsSpeed}</li> `;
   document.querySelector("#pokemon").insertAdjacentHTML("beforeend", myHTML);
-
-  showPokemon(gengar);
-  showPokemon(gengar);
-  showPokemon(gengar);
 }
 
 function showPokemon(pokemon) {
@@ -97,72 +93,3 @@ function showPokemonModal(pokemon) {
   document.querySelector("#dialog-pokemon-special-defence").textContent = `Special Defence: ${pokemon.statsSpecialDefence}`;
   document.querySelector("#dialog-pokemon-speed").textContent = `Speed: ${pokemon.statsSpeed}`;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-// function showCharacter(image, name, house, dateOfBirth, actor) {
-//     //define elements
-//     const articleElement = document.createElement("article");
-//     const imageElement = document.createElement("img");
-//     const nameElement = document.createElement("h2");
-//     const houseElement = document.createElement("p");
-//     const dateOfBirthElement = document.createElement("p");
-//     const actorElement = document.createElement("p");
-
-//     // set content
-//     imageElement.src = image;
-//     nameElement.textContent = name;
-//     houseElement.textContent = house;
-//     dateOfBirthElement.textContent = `Date of Birth: ${dateOfBirth}`;
-//     actorElement.textContent = `Played by ${actor}`;
-
-//     // append child elements to articleElement
-//     articleElement.appendChild(imageElement);
-//     articleElement.appendChild(nameElement);
-//     articleElement.appendChild(houseElement);
-//     articleElement.appendChild(dateOfBirthElement);
-//     articleElement.appendChild(actorElement);
-
-//     // append article to grid
-//     document.querySelector("#characters").appendChild(articleElement);
-// }
