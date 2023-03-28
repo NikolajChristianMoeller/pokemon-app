@@ -52,7 +52,7 @@ img {
 
 /* ---------- header styling ---------- */
 header {
-    background-color: var(--green);
+    background-color: var(--purple);
     color: var(--text-color-light);
     padding: 1em;
     position: fixed;

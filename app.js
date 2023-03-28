@@ -6,9 +6,10 @@ console.log("Javascript kører");
 
 async function initApp() {
   console.log("initApp: app.js is running");
-  const gengar = await getPokemon("https://cederdorff.github.io/dat-js/05-data/pokemons.json");
-  console.log(gengar);
-  showPokemon(gengar[1]);
+  const pokemons = await getPokemon("https://cederdorff.github.io/dat-js/05-data/pokemons.json");
+  for (const pokemon of pokemons) {
+    showPokemon(pokemon)
+  }
 }
 
 async function getPokemon(url) {
@@ -74,47 +75,30 @@ function showPokemon(pokemon) {
 function showPokemonModal(pokemon) {
   console.log(pokemon);
   document.querySelector("#dialog-pokemon").showModal();
-  document.querySelector("#dialog-pokemon-name").textContent = pokemon.name;
-  document.querySelector("#dialog-pokemon-description").textContent = pokemon.type;
-  document.querySelector("#dialog-pokemon-ability").textContent = pokemon.ability;
+  document.querySelector("#dialog-pokemon-name").textContent = "Name: " + pokemon.name;
+  document.querySelector("#dialog-pokemon-description").textContent = "Description: " + pokemon.type;
+  document.querySelector("#dialog-pokemon-ability").textContent = `Ability:${pokemon.ability}`;
   document.querySelector("#dialog-pokemon-image").src = pokemon.image;
   document.querySelector("#dialog-pokemon-footprint").src = pokemon.footprint;
-  document.querySelector("#dialog-pokemon-dexindex").textContent = pokemon.dexIndex;
-  document.querySelector("#dialog-pokemon-type").textContent = pokemon.type;
-  document.querySelector("#dialog-pokemon-subtype").textContent = pokemon.subtype;
-  document.querySelector("#dialog-pokemon-weaknesses").textContent = pokemon.weaknesses;
-  document.querySelector("#dialog-pokemon-gender").textContent = pokemon.gender;
-  document.querySelector("#dialog-pokemon-weight").textContent = pokemon.weight;
-  document.querySelector("#dialog-pokemon-height").textContent = pokemon.height;
-  document.querySelector("#dialog-pokemon-generation").textContent = pokemon.generation;
-  document.querySelector("#dialog-pokemon-spilversion").textContent = pokemon.spilversion;
-  document.querySelector("#dialog-pokemon-canEvolve").textContent = pokemon.canEvolve;
-  document.querySelector("#dialog-pokemon-health-points").textContent = pokemon.statsHP;
-  document.querySelector("#dialog-pokemon-attack").textContent = pokemon.statsAttack;
-  document.querySelector("#dialog-pokemon-defense").textContent = pokemon.statsDefence;
-  document.querySelector("#dialog-pokemon-special-attack").textContent = pokemon.statsSpecialAttack;
-  document.querySelector("#dialog-pokemon-special-defense").textContent = pokemon.statsSpecialDefence;
-  document.querySelector("#dialog-pokemon-speed").textContent = pokemon.statsSpeed;
-
-  let description = generateDescription(character);
-  document.querySelector("dialog-pokemon-description").textContent = description;
-  
-  document.querySelector("#dialog-pokemon").showModal();
+  document.querySelector("#dialog-pokemon-dexindex").textContent = `Dexindex: ${pokemon.dexIndex}`;
+  document.querySelector("#dialog-pokemon-type").textContent = `Type: ${pokemon.type}`;
+  document.querySelector("#dialog-pokemon-subtype").textContent = `Subtype: ${pokemon.subtype}`;
+  document.querySelector("#dialog-pokemon-weaknesses").textContent = `Weaknesses: ${pokemon.weaknesses}`;
+  document.querySelector("#dialog-pokemon-gender").textContent = `Gender: ${pokemon.gender}`;
+  document.querySelector("#dialog-pokemon-weight").textContent = `Weight: ${pokemon.weight}`;
+  document.querySelector("#dialog-pokemon-height").textContent = `Height: ${pokemon.height}`;
+  document.querySelector("#dialog-pokemon-generation").textContent = `Generation: ${pokemon.generation}`;
+  document.querySelector("#dialog-pokemon-spilversion").textContent = `Spilversion: ${pokemon.spilversion}`;
+  document.querySelector("#dialog-pokemon-canEvolve").textContent = `Can Avolve: ${pokemon.canEvolve}`;
+  document.querySelector("#dialog-pokemon-health-points").textContent = `HP: ${pokemon.statsHP}`;
+  document.querySelector("#dialog-pokemon-attack").textContent = `Attack: ${pokemon.StatsAttack}`;
+  document.querySelector("#dialog-pokemon-defence").textContent = `Defence: ${pokemon.statsDefence}`;
+  document.querySelector("#dialog-pokemon-special-attack").textContent = `Special Attack: ${pokemon.statsSpecialAttack}`;
+  document.querySelector("#dialog-pokemon-special-defence").textContent = `Special Defence: ${pokemon.statsSpecialDefence}`;
+  document.querySelector("#dialog-pokemon-speed").textContent = `Speed: ${pokemon.statsSpeed}`;
   }
 
-function generateDescription(pokemon) {
-  let description = "";
-  if (pokemon.hogwartsStaff && pokemon.alive) {
-    description = `${character.name} is employed at Hogwarts.`;
-  } else if (pokemon.hogwartsStaff && !pokemon.alive) {
-    description = `${pokemon.name} was employed at Hogwarts but is no longer alive.`;
-  } else if (pokemon.hogwartsStudent && pokemon.alive) {
-    description = `${pokemon.name} is a student at Hogwarts.`;
-  } else if (pokemon.hogwartsStudent && !pokemon.alive) {
-    description = `${pokemon.name} was a student at Hogwarts but is no longer alive.`;
-  }
-  return description;
-}
+
 
 
 
