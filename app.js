@@ -75,9 +75,9 @@ function showPokemon(pokemon) {
 function showPokemonModal(pokemon) {
   console.log(pokemon);
   document.querySelector("#dialog-pokemon").showModal();
-  document.querySelector("#dialog-pokemon-name").textContent = "Name: " + pokemon.name;
-  document.querySelector("#dialog-pokemon-description").textContent = "Description: " + pokemon.type;
-  document.querySelector("#dialog-pokemon-ability").textContent = `Ability:${pokemon.ability}`;
+  document.querySelector("#dialog-pokemon-name").textContent = `Name: ${pokemon.name}`;
+  document.querySelector("#dialog-pokemon-description").textContent = `Description: ${pokemon.description}`;
+  document.querySelector("#dialog-pokemon-ability").textContent = `Ability: ${pokemon.ability}`;
   document.querySelector("#dialog-pokemon-image").src = pokemon.image;
   document.querySelector("#dialog-pokemon-footprint").src = pokemon.footprint;
   document.querySelector("#dialog-pokemon-dexindex").textContent = `Dexindex: ${pokemon.dexIndex}`;
@@ -104,6 +104,42 @@ function showPokemonModal(pokemon) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 // function showCharacter(image, name, house, dateOfBirth, actor) {
 //     //define elements
 //     const articleElement = document.createElement("article");
