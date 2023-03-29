@@ -76,20 +76,38 @@ function showPokemonModal(pokemon) {
   document.querySelector("#dialog-pokemon-ability").textContent = `Ability: ${pokemon.ability}`;
   document.querySelector("#dialog-pokemon-image").src = pokemon.image;
   document.querySelector("#dialog-pokemon-footprint").src = pokemon.footprint;
-  document.querySelector("#dialog-pokemon-dexindex").textContent = `Dexindex: ${pokemon.dexIndex}`;
+  document.querySelector("#dialog-pokemon-dexindex").textContent = `Dexindex: ${pokemon.dexindex}`;
   document.querySelector("#dialog-pokemon-type").textContent = `Type: ${pokemon.type}`;
-  document.querySelector("#dialog-pokemon-subtype").textContent = `Subtype: ${pokemon.subtype}`;
+
+  if (pokemon.subtype != undefined || pokemon.subtype != null) {
+     document.querySelector("#dialog-pokemon-subtype").textContent = `Subtype: ${pokemon.subtype}`;
+   } else {
+     document.querySelector("#dialog-pokemon-subtype").textContent = "";
+   }
   document.querySelector("#dialog-pokemon-weaknesses").textContent = `Weaknesses: ${pokemon.weaknesses}`;
   document.querySelector("#dialog-pokemon-gender").textContent = `Gender: ${pokemon.gender}`;
-  document.querySelector("#dialog-pokemon-weight").textContent = `Weight: ${pokemon.weight}`;
-  document.querySelector("#dialog-pokemon-height").textContent = `Height: ${pokemon.height}`;
+  document.querySelector("#dialog-pokemon-weight").textContent = `Weight: ${pokemon.weight/1000} kg`;
+  document.querySelector("#dialog-pokemon-height").textContent = `Height: ${pokemon.height} cm`;
   document.querySelector("#dialog-pokemon-generation").textContent = `Generation: ${pokemon.generation}`;
   document.querySelector("#dialog-pokemon-spilversion").textContent = `Spilversion: ${pokemon.spilversion}`;
-  document.querySelector("#dialog-pokemon-canEvolve").textContent = `Can Avolve: ${pokemon.canEvolve}`;
+  
+  let canEvolve = gatherData(pokemon);
+  document.querySelector("#dialog-pokemon-canEvolve").textContent = `Can Evolve: ${pokemon.canEvolve}`;
   document.querySelector("#dialog-pokemon-health-points").textContent = `HP: ${pokemon.statsHP}`;
-  document.querySelector("#dialog-pokemon-attack").textContent = `Attack: ${pokemon.StatsAttack}`;
+  document.querySelector("#dialog-pokemon-attack").textContent = `Attack: ${pokemon.statsAttack}`;
   document.querySelector("#dialog-pokemon-defence").textContent = `Defence: ${pokemon.statsDefence}`;
   document.querySelector("#dialog-pokemon-special-attack").textContent = `Special Attack: ${pokemon.statsSpecialAttack}`;
   document.querySelector("#dialog-pokemon-special-defence").textContent = `Special Defence: ${pokemon.statsSpecialDefence}`;
   document.querySelector("#dialog-pokemon-speed").textContent = `Speed: ${pokemon.statsSpeed}`;
+}
+
+function gatherData(pokemon) {
+  let canEvolve = "";
+  if (pokemon.canEvolve === true) {
+    canEvolve = "This pokemon can evolve"
+  } else if (pokemon.canEvolve === false) {
+    canEvolve = "Does not have any no evolutions"
   }
+  return canEvolve;
+}
+
