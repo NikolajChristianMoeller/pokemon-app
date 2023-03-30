@@ -20,29 +20,32 @@ async function getPokemon(url) {
 }
 
 function showPokemonDialog(pokemon) {
-  const myHTML = /*html*/ `
-  <li>Name: ${pokemon.name}</li>
-  <li>Description: ${pokemon.description}</li>
-  <li>Ability: ${pokemon.ability}</li>
-  <li>Image: ${pokemon.image}</li>
-  <li>Footprint: ${pokemon.footprint}</li>
-  <li>Dexindex: ${pokemon.dexindex}</li>
-  <li>Type: ${pokemon.type}</li>
-  <li>Subtype: ${pokemon.subtype}</li>
-  <li>Weaknesses: ${pokemon.weaknesses}</li>
-  <li>Gender: ${pokemon.gender}</li>
-  <li>Weight: ${pokemon.weight}</li>
-  <li>Height: ${pokemon.height}</li>
-  <li>Generation: ${pokemon.generation}</li>
-  <li>Spilversion: ${pokemon.spilversion}</li>
-  <li>CanEvole: ${pokemon.canEvolve}</li>
-  <li>StatsHP: ${pokemon.statsHP}</li>
-  <li>StatsAttack: ${pokemon.statsAttack}</li>
-  <li>StatsDefence: ${pokemon.statsDefence}</li>
-  <li>StatsSpecialAttack: ${pokemon.statsSpecialAttack}</li>
-  <li>StatsSpecialDefence: ${pokemon.statsSpecialDefence}</li>
-  <li>StatsSpeed: ${pokemon.statsSpeed}</li> `;
-  document.querySelector("#pokemon").insertAdjacentHTML("beforeend", myHTML);
+
+// I do not need these lines anymore
+  // const myHTML = /*html*/ `
+  // <li>Name: ${pokemon.name}</li>
+  // <li>Description: ${pokemon.description}</li>
+  // <li>Ability: ${pokemon.ability}</li>
+  // <li>Image: ${pokemon.image}</li>
+  // <li>Footprint: ${pokemon.footprint}</li>
+  // <li>Dexindex: ${pokemon.dexindex}</li>
+  // <li>Type: ${pokemon.type}</li>
+  // <li>Subtype: ${pokemon.subtype}</li>
+  // <li>Weaknesses: ${pokemon.weaknesses}</li>
+  // <li>Gender: ${pokemon.gender}</li>
+  // <li>Weight: ${pokemon.weight}</li>
+  // <li>Height: ${pokemon.height}</li>
+  // <li>Generation: ${pokemon.generation}</li>
+  // <li>Spilversion: ${pokemon.spilversion}</li>
+  // <li>CanEvolve: ${canEvolve}</li>
+  // <li>StatsHP: ${pokemon.statsHP}</li>
+  // <li>StatsAttack: ${pokemon.statsAttack}</li>
+  // <li>StatsDefence: ${pokemon.statsDefence}</li>
+  // <li>StatsSpecialAttack: ${pokemon.statsSpecialAttack}</li>
+  // <li>StatsSpecialDefence: ${pokemon.statsSpecialDefence}</li>
+  // <li>StatsSpeed: ${pokemon.statsSpeed}</li> `;
+  // document.querySelector("#pokemon").insertAdjacentHTML("beforeend", myHTML);
+
 }
 
 function showPokemon(pokemon) {
@@ -69,6 +72,19 @@ function showPokemon(pokemon) {
 }
 
 function showPokemonModal(pokemon) {
+
+  let canEvolve = gatherData(pokemon);
+
+  function gatherData(pokemon) {
+    let canEvolve = "";
+    if (pokemon.canEvolve === true) {
+      canEvolve = "This pokemon can evolve";
+    } else if (pokemon.canEvolve === false) {
+      canEvolve = "Does not have any no evolutions";
+    }
+    return canEvolve;
+  }
+
   console.log(pokemon);
   document.querySelector("#dialog-pokemon").showModal();
   document.querySelector("#dialog-pokemon-name").textContent = `Name: ${pokemon.name}`;
@@ -83,16 +99,15 @@ function showPokemonModal(pokemon) {
      document.querySelector("#dialog-pokemon-subtype").textContent = `Subtype: ${pokemon.subtype}`;
    } else {
      document.querySelector("#dialog-pokemon-subtype").textContent = "";
-   }
+  }
+  
   document.querySelector("#dialog-pokemon-weaknesses").textContent = `Weaknesses: ${pokemon.weaknesses}`;
   document.querySelector("#dialog-pokemon-gender").textContent = `Gender: ${pokemon.gender}`;
   document.querySelector("#dialog-pokemon-weight").textContent = `Weight: ${pokemon.weight/1000} kg`;
   document.querySelector("#dialog-pokemon-height").textContent = `Height: ${pokemon.height} cm`;
   document.querySelector("#dialog-pokemon-generation").textContent = `Generation: ${pokemon.generation}`;
   document.querySelector("#dialog-pokemon-spilversion").textContent = `Spilversion: ${pokemon.spilversion}`;
-  
-  let canEvolve = gatherData(pokemon);
-  document.querySelector("#dialog-pokemon-canEvolve").textContent = `Can Evolve: ${pokemon.canEvolve}`;
+  document.querySelector("#dialog-pokemon-canEvolve").textContent = canEvolve;
   document.querySelector("#dialog-pokemon-health-points").textContent = `HP: ${pokemon.statsHP}`;
   document.querySelector("#dialog-pokemon-attack").textContent = `Attack: ${pokemon.statsAttack}`;
   document.querySelector("#dialog-pokemon-defence").textContent = `Defence: ${pokemon.statsDefence}`;
@@ -101,13 +116,4 @@ function showPokemonModal(pokemon) {
   document.querySelector("#dialog-pokemon-speed").textContent = `Speed: ${pokemon.statsSpeed}`;
 }
 
-function gatherData(pokemon) {
-  let canEvolve = "";
-  if (pokemon.canEvolve === true) {
-    canEvolve = "This pokemon can evolve"
-  } else if (pokemon.canEvolve === false) {
-    canEvolve = "Does not have any no evolutions"
-  }
-  return canEvolve;
-}
 
