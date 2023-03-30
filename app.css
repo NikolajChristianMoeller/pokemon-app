@@ -138,7 +138,7 @@ button {
 
 dialog {
     border-color: black;
-    background-color: var(--light-green);
+    background-color: yellow;
     width: 50vw;
     height: 45vw;
     padding: 2em 1em;
