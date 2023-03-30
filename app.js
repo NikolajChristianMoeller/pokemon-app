@@ -21,7 +21,8 @@ async function getPokemon(url) {
 
 function showPokemonDialog(pokemon) {
 
-// I do not need these lines anymore
+// I do not need these lines anymore, I keep them for future understanding
+
   // const myHTML = /*html*/ `
   // <li>Name: ${pokemon.name}</li>
   // <li>Description: ${pokemon.description}</li>
@@ -107,6 +108,7 @@ function showPokemonModal(pokemon) {
   document.querySelector("#dialog-pokemon-height").textContent = `Height: ${pokemon.height} cm`;
   document.querySelector("#dialog-pokemon-generation").textContent = `Generation: ${pokemon.generation}`;
   document.querySelector("#dialog-pokemon-spilversion").textContent = `Spilversion: ${pokemon.spilversion}`;
+  
   document.querySelector("#dialog-pokemon-canEvolve").textContent = canEvolve;
   document.querySelector("#dialog-pokemon-health-points").textContent = `HP: ${pokemon.statsHP}`;
   document.querySelector("#dialog-pokemon-attack").textContent = `Attack: ${pokemon.statsAttack}`;
@@ -115,5 +117,4 @@ function showPokemonModal(pokemon) {
   document.querySelector("#dialog-pokemon-special-defence").textContent = `Special Defence: ${pokemon.statsSpecialDefence}`;
   document.querySelector("#dialog-pokemon-speed").textContent = `Speed: ${pokemon.statsSpeed}`;
 }
-
 

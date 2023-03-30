@@ -18,11 +18,16 @@
     </main>
 
     <dialog id="dialog-pokemon">
-        <section class="dialog-grid">
-            <li id="dialog-pokemon-name">Name:</li>
+        <div class="dialog-rows"> 
+        <div>
+            <p id="dialog-pokemon-name">Name:</p>
+            <img class="modalPopUp-img removeDot" src="" alt="" id="dialog-pokemon-image"">
+            <p>Footprint: </p>
+            <img id="dialog-pokemon-footprint"/>
+        </div>
+        <section class="dialog-grid"> 
             <li id="dialog-pokemon-description">Description:</li>
             <li id="dialog-pokemon-ability">Ability:</li>
-            <li><img src="" alt="" id="dialog-pokemon-image""> Image:</li>
             <li id="dialog-pokemon-dexindex">Dexindex:</li>
             <li id="dialog-pokemon-type">Type:</li>
             <li id="dialog-pokemon-subtype">Subtype:</li>
@@ -39,10 +44,8 @@
             <li id="dialog-pokemon-special-attack">Special Attack:</li>
             <li id="dialog-pokemon-special-defence">Special Defence:</li>
             <li id="dialog-pokemon-speed">Speed:</li>
-            <p></p>
-            <li id="footprint-text"></li>
-            <img id="dialog-pokemon-footprint" />
         </section>
+        </div>
         <form method="dialog">
 		    <button id="btn-cancel">Close</button>
         </form>

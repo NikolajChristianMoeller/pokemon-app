@@ -26,16 +26,6 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    font-weight: 500;
-    letter-spacing: 0.1px;
-}
-
-h3 {
-    font-weight: 500;
-    letter-spacing: 0.1px;
-}
-
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -47,11 +37,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-}
-
-a {
-    cursor: pointer;
-    color: var(--green);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 img {
@@ -65,6 +51,8 @@ footer {
   padding: 1rem;
   margin-top: 1rem;
   color: black;
+  font-size: 50px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 main {
@@ -86,8 +74,10 @@ main {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1em;
-    padding: 1em;
+    gap: 5em;
+    padding: 6em;
+    grid-auto-rows: min-content;
+    align-content: start;
 }
 
 @media (min-width: 600px) {
@@ -96,19 +86,9 @@ main {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 900px) {
     .grid-container {
         grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-@media (min-width: 1200px) {
-    .grid-container {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-}
-@media (min-width: 1500px) {
-    .grid-container {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
 
@@ -116,8 +96,8 @@ main {
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
     padding: 1.5em;
     background-color: var(--white);
-    transition: 0.5s;
-    animation: fadeIn 0.5s;
+    transition: 5s;
+    animation: fadeIn 3s;
     cursor: pointer;
 }
 
@@ -131,11 +111,6 @@ main {
     object-fit: cover;
 }
 
-.grid-item p {
-    margin: 0.3em 0;
-}
-
-
 .grid-container .btns {
     padding: 1em 0 0;
     display: grid;
@@ -147,43 +122,56 @@ main {
     width: 100%;
 }
 
-form {
-    margin: 2em auto 0;
-    background-color: var(--light-green);
-    padding: 1em 1em 2em;
-    text-align: center;
-}
-
 button {
-    font-weight: 300;
+    font-weight: 200;
     font-size: 1em;
     text-align: center;
     cursor: pointer;
     border: none;
     border-radius: 0;
-    color: var(--text-color-light);
-    background-color: var(--green);
-    letter-spacing: 0.05em;
+    background-color: blueviolet;
     text-transform: uppercase;
     padding: 0.5em 1em;
     width: 100%;
-    max-width: 380px;
+    max-width: 300px;
 }
 
-
 dialog {
-    border-color: var(--green);
+    border-color: black;
     background-color: var(--light-green);
-    width: 65vw;
+    width: 50vw;
+    height: 45vw;
     padding: 2em 1em;
+}
+
+dialog ul {
+    margin: 1em 0 1em;
+    padding-inline-start: 2em;
 }
 
 .dialog-grid {
     display: grid;
+    grid-template-columns: 1fr;
+}
+
+.dialog-rows {
+    display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-dialog img {
-    left: 2%;
-    top: 2%;
+.modalPopUp-img {
+    width: 250px;
+    height: auto;
 }
+
+.removeDot {
+    list-style-type: none;
+}
+
+
+
+
+
+
+
+
