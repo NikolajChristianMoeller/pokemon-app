@@ -5,7 +5,6 @@ window.addEventListener("load", initApp);
 console.log("Javascript kører");
 
 async function initApp() {
-  console.log("initApp: app.js is running");
   const pokemons = await getPokemon("https://cederdorff.github.io/dat-js/05-data/pokemons.json");
   for (const pokemon of pokemons) {
     showPokemon(pokemon)
@@ -15,7 +14,6 @@ async function initApp() {
 async function getPokemon(url) {
   const response = await fetch(url);
   const data = await response.json();
-  console.log(data);
   return data;
 }
 
